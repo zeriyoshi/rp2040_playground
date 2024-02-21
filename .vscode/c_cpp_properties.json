@@ -1,0 +1,27 @@
+{
+    "configurations": [
+        {
+            "name": "Mac",
+            "includePath": [
+                "${workspaceFolder}/**",
+                "${env:PICO_SDK_PATH}/src/**",
+                "${env:PICO_SDK_PATH}/src/rp2_common/hardware_gpio/include",
+                "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/include",
+                "${env:PICO_SDK_PATH}/src/rp2040/hardware_structs/include",
+                "${env:PICO_SDK_PATH}/src/common/pico_base/include",
+                "${env:PICO_SDK_PATH}/src/common/pico_stdlib/include",
+                "${env:PICO_SDK_PATH}/src/common/pico_time/include",
+                "${env:PICO_SDK_PATH}/src/common/pico_multicore/include"
+            ],
+            "defines": [],
+            "macFrameworkPath": [
+                "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
+            ],
+            "compilerPath": "/usr/bin/clang",
+            "cStandard": "c99",
+            "cppStandard": "c++17",
+            "intelliSenseMode": "macos-clang-arm64"
+        }
+    ],
+    "version": 4
+}

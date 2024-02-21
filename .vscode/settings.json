@@ -1,0 +1,12 @@
+{
+    "files.associations": {
+        "stdlib.h": "c",
+        "stdio.h": "c",
+        "stdio_usb.h": "c",
+        "pico.h": "c",
+        "gpio.h": "c",
+        "iobank0.h": "c",
+        "multicore.h": "c",
+        "pwm.h": "c"
+    }
+}
