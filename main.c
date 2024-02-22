@@ -32,7 +32,7 @@ int main() {
 
     while (true) {
         for (uint16_t hue = 0; hue < 65535; hue += 1000) {
-            rgb = hsvTo48BitRgb(hue, 65535, 65535);
+            rgb = hsv_to_rgb48(hue, 65535, 65535);
 
             pwm_set_gpio_level(LED_R, rgb.r);
             pwm_set_gpio_level(LED_G, rgb.g);
