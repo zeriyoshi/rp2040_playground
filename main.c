@@ -16,6 +16,7 @@
 #define LED_B 20
 
 int main() {
+    /* YouTube Logo Red */
     rgb48_t rgb = rgb24_to_rgb48(color_rgb24(208, 74, 34));
     pwm_config config = pwm_get_default_config();
 
