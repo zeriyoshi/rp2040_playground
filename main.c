@@ -30,13 +30,12 @@ int main() {
     pwm_init(pwm_gpio_to_slice_num(LED_B), &config, true);
 
     while (true) {
-        for (uint16_t hue = 0; hue < UINT8_MAX; hue++) {
-            rgb24_t rgb24 = hsv_to_rgb24(hue, UINT8_MAX, UINT8_MAX);
-            rgb = rgb24_to_rgb48(rgb24);
+        for (uint16_t hue = 0; hue < UINT16_MAX; hue += 256) {
+            rgb = hsv_to_rgb48(hue, UINT16_MAX, UINT16_MAX);
             pwm_set_gpio_level(LED_R, rgb.r);
             pwm_set_gpio_level(LED_G, rgb.g);
             pwm_set_gpio_level(LED_B, rgb.b);
-            sleep_us(1000);
+            sleep_us(2000);
         }
     }
 

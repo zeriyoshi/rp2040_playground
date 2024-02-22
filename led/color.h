@@ -82,8 +82,8 @@ rgb24_t hsv_to_rgb24(uint8_t hue, uint8_t sat, uint8_t val) {
         return color_rgb24(val, val, val);
     }
 
-    region = hue / 43;
-    remainder = (hue - (region * 43)) * 6;
+    region = (hue * 6) >> 8;
+    remainder = ((hue - (region << 6) - (region << 1) + region) * 6);
 
     p = (val * (256 - sat)) >> 8;
     q = (val * (256 - ((sat * remainder) >> 8))) >> 8;
