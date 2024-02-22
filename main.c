@@ -35,7 +35,6 @@ int main() {
     pwm_set_gpio_level(LED_R, ~rgb.r + 1);
     pwm_set_gpio_level(LED_G, ~rgb.g + 1);
     pwm_set_gpio_level(LED_B, ~rgb.b + 1);
-    sleep_us(600);
 
     return 0;
 }
