@@ -18,8 +18,7 @@ for ($i = 0; $i <= 65535; $i++) {
     echo (int)(pow((float) $i / (float) 65535, GAMMA) * 65535 + 0.5);
 }
 ?>};
-const uint8_t _gamma_lut_8[] = {
-    <?php
+const uint8_t _gamma_lut_8[] = {<?php
 for ($i = 0; $i <= 255; $i++) {
     if ($i > 0) {
         echo ", ";
