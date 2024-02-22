@@ -7,3 +7,6 @@
 !LICENSE
 !/.vscode
 !/.vscode/*
+!/third_party
+!/third_party/*
+!/third_party/raspberrypi/pico-sdk

@@ -1,5 +1,7 @@
 cmake_minimum_required(VERSION 3.28)
 
+set(PICO_SDK_PATH ./third_party/raspberrypi/pico-sdk)
+
 set(PROJECT_NAME rp2040_playground)
 
 set(PICO_BOARD pico)

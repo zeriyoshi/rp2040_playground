@@ -1,26 +1,26 @@
 {
     "configurations": [
         {
-            "name": "Mac",
+            "name": "macOS",
             "includePath": [
                 "${workspaceFolder}/**",
-                "${env:PICO_SDK_PATH}/src/**",
-                "${env:PICO_SDK_PATH}/src/rp2_common/hardware_gpio/include",
-                "${env:PICO_SDK_PATH}/src/rp2040/hardware_regs/include",
-                "${env:PICO_SDK_PATH}/src/rp2040/hardware_structs/include",
-                "${env:PICO_SDK_PATH}/src/common/pico_base/include",
-                "${env:PICO_SDK_PATH}/src/common/pico_stdlib/include",
-                "${env:PICO_SDK_PATH}/src/common/pico_time/include",
-                "${env:PICO_SDK_PATH}/src/common/pico_multicore/include"
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/common/pico_base/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/common/pico_stdlib/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/common/pico_time/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/**",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2040/hardware_regs/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2040/hardware_structs/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2_common/hardware_gpio/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2_common/pico_multicore/include"
             ],
             "defines": [],
             "macFrameworkPath": [
                 "/Library/Developer/CommandLineTools/SDKs/MacOSX.sdk/System/Library/Frameworks"
             ],
-            "compilerPath": "/usr/bin/clang",
-            "cStandard": "c99",
+            "compilerPath": "/opt/homebrew/bin/arm-none-eabi-gcc",
+            "cStandard": "c11",
             "cppStandard": "c++17",
-            "intelliSenseMode": "macos-clang-arm64"
+            "intelliSenseMode": "gcc-arm"
         }
     ],
     "version": 4
