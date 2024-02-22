@@ -16,7 +16,7 @@
 #define LED_B 20
 
 int main() {
-    rgb48_t rgb = rgb24_to_rgb48(color_rgb24(131, 173, 105));
+    rgb48_t rgb;
     pwm_config config = pwm_get_default_config();
 
     gpio_set_function(LED_R, GPIO_FUNC_PWM);
@@ -29,11 +29,16 @@ int main() {
     pwm_init(pwm_gpio_to_slice_num(LED_G), &config, true);
     pwm_init(pwm_gpio_to_slice_num(LED_B), &config, true);
 
-    apply_gamma_rgb48(&rgb);
-
-    pwm_set_gpio_level(LED_R, ~rgb.r + 1);
-    pwm_set_gpio_level(LED_G, ~rgb.g + 1);
-    pwm_set_gpio_level(LED_B, ~rgb.b + 1);
+    while (true) {
+        for (uint16_t hue = 0; hue < UINT8_MAX; hue++) {
+            rgb24_t rgb24 = hsv_to_rgb24(hue, UINT8_MAX, UINT8_MAX);
+            rgb = rgb24_to_rgb48(rgb24);
+            pwm_set_gpio_level(LED_R, rgb.r);
+            pwm_set_gpio_level(LED_G, rgb.g);
+            pwm_set_gpio_level(LED_B, rgb.b);
+            sleep_us(1000);
+        }
+    }
 
     return 0;
 }

@@ -85,9 +85,9 @@ rgb24_t hsv_to_rgb24(uint8_t hue, uint8_t sat, uint8_t val) {
     region = hue / 43;
     remainder = (hue - (region * 43)) * 6;
 
-    p = (val * (255 - sat)) / 255;
-    q = (val * (255 - ((sat * remainder) / 255))) / 255;
-    t = (val * (255 - ((sat * (255 - remainder)) / 255))) / 255;
+    p = (val * (256 - sat)) >> 8;
+    q = (val * (256 - ((sat * remainder) >> 8))) >> 8;
+    t = (val * (256 - ((sat * (256 - remainder)) >> 8))) >> 8;
 
     switch (region) {
         case 0:
@@ -115,9 +115,9 @@ rgb48_t hsv_to_rgb48(uint16_t hue, uint16_t sat, uint16_t val) {
     region = hue / 10923;
     remainder = (hue - (region * 10923)) * 6;
 
-    p = (val * (65535 - sat)) / 65535;
-    q = (val * (65535 - ((sat * remainder) / 65535))) / 65535;
-    t = (val * (65535 - ((sat * (65535 - remainder)) / 65535))) / 65535;
+    p = ((val * ((65536 - sat) & 0xFFFF)) >> 16);
+    q = ((val * ((65536 - ((sat * remainder) >> 16)) & 0xFFFF)) >> 16);
+    t = ((val * ((65536 - ((sat * (65536 - remainder)) >> 16)) & 0xFFFF)) >> 16);
 
     switch (region) {
         case 0:
