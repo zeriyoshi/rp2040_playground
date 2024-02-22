@@ -3,4 +3,4 @@
 Raspberry Pi RP2040 Micro controller playground.
 
 ## LICENSE
-GPLv3
+MIT

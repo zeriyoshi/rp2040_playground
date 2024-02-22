@@ -5,6 +5,8 @@
 !CMakeLists.txt
 !pico_sdk_import.cmake
 !LICENSE
+!/led
+!/led/*
 !/.vscode
 !/.vscode/*
 !/third_party
