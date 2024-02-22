@@ -1,0 +1,9 @@
+*
+!.gitignore
+!README.md
+!main.c
+!CMakeLists.txt
+!pico_sdk_import.cmake
+!LICENSE
+!/.vscode
+!/.vscode/*

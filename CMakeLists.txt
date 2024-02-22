@@ -30,5 +30,5 @@ pico_add_extra_outputs(${PROJECT_NAME})
 
 install(FILES
     ${CMAKE_CURRENT_BINARY_DIR}/${PROJECT_NAME}.uf2
-    DESTINATION .
+    DESTINATION /Volumes/RPI-RP2/
 )
