@@ -23,6 +23,7 @@ target_link_libraries(${PROJECT_NAME}
     pico_multicore
     hardware_gpio
     hardware_pwm
+    hardware_clocks
 )
 
 pico_enable_stdio_usb(${PROJECT_NAME} 1)

@@ -29,4 +29,5 @@ for ($i = 0; $i <= 255; $i++) {
     echo (int)(pow((float) $i / (float) 255, GAMMA) * 255 + 0.5);
 }
 ?>};
+
 #endif

@@ -4,14 +4,15 @@
             "name": "macOS",
             "includePath": [
                 "${workspaceFolder}/**",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/**",
                 "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/common/pico_base/include",
                 "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/common/pico_stdlib/include",
                 "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/common/pico_time/include",
-                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/**",
                 "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2040/hardware_regs/include",
                 "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2040/hardware_structs/include",
                 "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2_common/hardware_gpio/include",
-                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2_common/pico_multicore/include"
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2_common/pico_multicore/include",
+                "${workspaceFolder}/third_party/raspberrypi/pico-sdk/src/rp2_common/hardware_pio/include"
             ],
             "defines": [],
             "macFrameworkPath": [

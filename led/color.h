@@ -63,13 +63,13 @@ uint16_t inline gamma16(uint16_t n) {
     return _gamma_lut_16[n];
 }
 
-void apply_gamma_24(rgb24_t *rgb) {
+void apply_gamma_rgb24(rgb24_t *rgb) {
     rgb->r = gamma8(rgb->r);
     rgb->g = gamma8(rgb->g);
     rgb->b = gamma8(rgb->b);
 }
 
-void apply_gamma_48(rgb48_t *rgb) {
+void apply_gamma_rgb48(rgb48_t *rgb) {
     rgb->r = gamma16(rgb->r);
     rgb->g = gamma16(rgb->g);
     rgb->b = gamma16(rgb->b);

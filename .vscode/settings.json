@@ -9,6 +9,7 @@
         "multicore.h": "c",
         "pwm.h": "c",
         "color.h": "c",
-        "gamma.h": "c"
+        "gamma.h": "c",
+        "clocks.h": "c"
     }
 }
