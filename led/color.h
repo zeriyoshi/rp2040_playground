@@ -106,19 +106,18 @@ rgb24_t hsv_to_rgb24(uint8_t hue, uint8_t sat, uint8_t val) {
 }
 
 rgb48_t hsv_to_rgb48(uint16_t hue, uint16_t sat, uint16_t val) {
-    unsigned int region, remainder, p, q, t;
-    unsigned long hue_scaled = (uint16_t)hue * 360 / 65535;
+    uint16_t region, remainder, p, q, t;
 
     if (sat == 0) {
         return color_rgb48(val, val, val);
     }
 
-    region = hue_scaled / 60;
-    remainder = ((hue_scaled % 60) * 65535) / 60;
+    region = hue / 10923;
+    remainder = (hue - (region * 10923)) * 6;
 
-    p = (val * (65535 - sat)) >> 16;
-    q = (val * (65535 - ((sat * remainder) / 65535))) >> 16;
-    t = (val * (65535 - ((sat * (65535 - remainder)) / 65535))) >> 16;
+    p = (val * (65535 - sat)) / 65535;
+    q = (val * (65535 - ((sat * remainder) / 65535))) / 65535;
+    t = (val * (65535 - ((sat * (65535 - remainder)) / 65535))) / 65535;
 
     switch (region) {
         case 0:
