@@ -56,6 +56,8 @@ int main() {
         sleep_ms(1000);
         draw(jashin);
         sleep_ms(1000);
+        draw(jashin2);
+        sleep_ms(1000);
     }
 
     return 0;
