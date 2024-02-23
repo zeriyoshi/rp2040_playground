@@ -1,42 +1,61 @@
 #include <stdio.h>
 #include <stdbool.h>
 #include <math.h>
+
 #include "pico/stdlib.h"
-#include "pico/multicore.h"
-#include "hardware/gpio.h"
-#include "hardware/pwm.h"
+#include "hardware/pio.h"
+#include "hardware/clocks.h"
 
 #include "led/color.h"
+#include "neopixel.pio.h"
 
-/*
- * For Pimoroni Tiny2040
- */
-#define LED_R 18
-#define LED_G 19
-#define LED_B 20
+#include "jcdk.h"
+
+static inline uint32_t rgb2grb(uint8_t r, uint8_t g, uint8_t b) {
+    return
+            ((uint32_t) (r) << 8) |
+            ((uint32_t) (g) << 16) |
+            (uint32_t) (b);
+}
+
+static inline void send_map(uint32_t data) {
+    pio_sm_put_blocking(pio0, 0, (rgb2grb(
+        gamma8((data >> 16) & 0xFF),
+        gamma8((data >> 8) & 0xFF),
+        gamma8(data & 0xFF)
+     ) << 8U));
+}
+
+void draw(const uint32_t data[]) {
+    for (int row = 0; row < 8; row++) {
+        if (row % 2 == 0) {
+            for (int col = 8 - 1; col >= 0; col--) {
+                int index = row * 8 + col;
+                send_map(data[index]);
+            }
+        } else {
+            for (int col = 0; col < 8; col++) {
+                int index = row * 8 + col;
+                send_map(data[index]);
+            }
+        }
+    }
+}
 
 int main() {
-    rgb48_t rgb;
-    pwm_config config = pwm_get_default_config();
+    stdio_init_all();
 
-    gpio_set_function(LED_R, GPIO_FUNC_PWM);
-    gpio_set_function(LED_G, GPIO_FUNC_PWM);
-    gpio_set_function(LED_B, GPIO_FUNC_PWM);
+    PIO pio = pio0;
+    int sm = 0;
+    uint offset = pio_add_program(pio, &neopixel_program);
 
-    pwm_config_set_clkdiv(&config, 6.1f);
-
-    pwm_init(pwm_gpio_to_slice_num(LED_R), &config, true);
-    pwm_init(pwm_gpio_to_slice_num(LED_G), &config, true);
-    pwm_init(pwm_gpio_to_slice_num(LED_B), &config, true);
+    neopixel_program_init(pio, sm, offset, 2, 800000, false);
 
     while (true) {
-        for (uint16_t hue = 0; hue < UINT16_MAX; hue += 256) {
-            rgb = hsv_to_rgb48(hue, UINT16_MAX, UINT16_MAX);
-            pwm_set_gpio_level(LED_R, rgb.r);
-            pwm_set_gpio_level(LED_G, rgb.g);
-            pwm_set_gpio_level(LED_B, rgb.b);
-            sleep_us(2000);
-        }
+        draw(yurine);
+        sleep_ms(1000);
+        draw(jashin);
+        sleep_ms(1000);
     }
 
     return 0;

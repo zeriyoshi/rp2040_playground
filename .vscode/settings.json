@@ -10,6 +10,8 @@
         "pwm.h": "c",
         "color.h": "c",
         "gamma.h": "c",
-        "clocks.h": "c"
+        "clocks.h": "c",
+        "pio.h": "c",
+        "neopixel.pio.h": "c"
     }
 }

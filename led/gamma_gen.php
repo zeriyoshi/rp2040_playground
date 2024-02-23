@@ -1,6 +1,6 @@
 <?php
 
-const GAMMA = 2.8;
+const GAMMA = 7.2;
 
 ?>#ifndef _LED_GAMMA_H
 # define _LED_GAMMA_H
