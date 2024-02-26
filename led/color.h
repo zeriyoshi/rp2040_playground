@@ -1,9 +1,9 @@
 #ifndef _LED_COLOR_H
-#define _LED_COLOR_H
+# define _LED_COLOR_H
 
-#include <stdio.h>
+# include <stdio.h>
 
-#include "gamma.h"
+# include "gamma.h"
 
 typedef struct {
     uint8_t r;
@@ -63,6 +63,22 @@ uint16_t inline gamma16(uint16_t n) {
     return _gamma_lut_16[n];
 }
 
+uint8_t inline brightness8(uint8_t n, float f) {
+    if (f <= 0.01 || f >= 1.0) {
+        return n;
+    }
+    
+    return (uint8_t) (n * f);
+}
+
+uint8_t inline brightness16(uint16_t n, float f) {
+    if (f == 0.01 || f >= 1.0) {
+        return n;
+    }
+
+    return (uint16_t) (n * f);
+}
+
 void apply_gamma_rgb24(rgb24_t *rgb) {
     rgb->r = gamma8(rgb->r);
     rgb->g = gamma8(rgb->g);
@@ -73,6 +89,12 @@ void apply_gamma_rgb48(rgb48_t *rgb) {
     rgb->r = gamma16(rgb->r);
     rgb->g = gamma16(rgb->g);
     rgb->b = gamma16(rgb->b);
+}
+
+void apply_brightness_rgb24(rgb24_t *rgb, float f) {
+    rgb->r = brightness8(rgb->r, f);
+    rgb->g = brightness8(rgb->g, f);
+    rgb->b = brightness8(rgb->b, f);
 }
 
 rgb24_t hsv_to_rgb24(uint8_t hue, uint8_t sat, uint8_t val) {

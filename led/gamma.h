@@ -1,7 +1,7 @@
 #ifndef _LED_GAMMA_H
 # define _LED_GAMMA_H
 
-#include <stdio.h>
+# include <stdio.h>
 
 const uint16_t _gamma_lut_16[] = {
 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 
